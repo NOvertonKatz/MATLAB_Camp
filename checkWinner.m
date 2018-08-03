@@ -9,6 +9,7 @@ function [won, player] = checkWinner(Board, p1, p2)
 %   player = the player who won
 
 won = false;
+player = 0;
 % check each row
 for r = 1:3
     if ((Board(r, 1) == p1) && (Board(r, 2) == p1) && (Board(r, 3) == p1))
@@ -30,24 +31,21 @@ for c = 1:3
     end
 end
 % check diagonal
-for d = 1:3
     % top diagonal
-    if ((Board(d, d) == p1) && (Board(d, d) == p1) && (Board(d, d) == p1))
+    if ((Board(1,1) == p1) && (Board(2,2) == p1) && (Board(3,3) == p1))
         won = true;
         player = p1;
-    elseif ((Board(d, d) == p2) && (Board(d, d) == p2) && (Board(d, d) == p2))
+    elseif ((Board(1,1) == p2) && (Board(2,2) == p2) && (Board(3,3) == p2))
         won = true;
         player = p2;
     end
     % bottom diagonal
-    d2 = 3-d;
-    if ((Board(d, d2) == p1) && (Board(d, d2) == p1) && (Board(d, d2) == p1))
+    if ((Board(1,3) == p1) && (Board(2,2) == p1) && (Board(3,1) == p1))
         won = true;
         player = p1;
-    elseif ((Board(d, d2) == p2) && (Board(d, d2) == p2) && (Board(d, d2) == p2))
+    elseif ((Board(1,3) == p2) && (Board(2,2) == p2) && (Board(3,1) == p2))
         won = true;
         player = p2;
     end
-end
 
 end
